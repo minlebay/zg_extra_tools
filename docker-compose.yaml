@@ -1,4 +1,9 @@
 version: '3.8'
+
+networks:
+  local-net:
+    external: true
+
 services:
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.9.2
@@ -15,6 +20,8 @@ services:
         hard: -1
     volumes:
       - esdata1:/usr/share/elasticsearch/data
+    networks:
+      - local-net
     ports:
       - 9200:9200
       - 9300:9300
@@ -24,6 +31,8 @@ services:
     container_name: logstash
     volumes:
       - ./logstash/pipeline:/usr/share/logstash/pipeline
+    networks:
+      - local-net
     ports:
       - 5000:5000
       - 9600:9600
@@ -33,6 +42,8 @@ services:
     container_name: kibana
     environment:
       - ELASTICSEARCH_URL=http://elasticsearch:9200
+    networks:
+      - local-net
     ports:
       - 5601:5601
 
