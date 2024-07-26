@@ -55,7 +55,7 @@ services:
     networks:
       - local-net
     ports:
-      - "21122:21122"
+      - 9090:9090
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
 
