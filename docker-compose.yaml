@@ -23,8 +23,8 @@ services:
     networks:
       - local-net
     ports:
-      - 9200:9200
-      - 9300:9300
+      - "9200:9200"
+      - "9300:9300"
 
   logstash:
     image: docker.elastic.co/logstash/logstash:7.9.2
@@ -34,8 +34,8 @@ services:
     networks:
       - local-net
     ports:
-      - 5000:5000
-      - 9600:9600
+      - "5000:5000"
+      - "9600:9600"
 
   kibana:
     image: docker.elastic.co/kibana/kibana:7.9.2
@@ -45,7 +45,7 @@ services:
     networks:
       - local-net
     ports:
-      - 5601:5601
+      - "5601:5601"
 
   prometheus:
     image: prom/prometheus:latest
